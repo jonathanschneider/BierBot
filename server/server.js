@@ -49,7 +49,7 @@ var morgan = require('morgan');
 var exec = require('child_process').exec;
 // options
 var httpControl = require('./libs/httpControl');
-var httpControlEnabled = true;
+var httpControlEnabled;
 var telegram = require('./libs/telegram');
 var telegramEnabled;
 
@@ -708,6 +708,16 @@ Setting.findOne(function(err, appSettings) {
       PD.setBrewDateAsync(brewdate);
       brewlog.setBrewDateAsync(brewdate);
 
+      // Set HTTP control settings
+      if (appSettings.httpControl.enabled) {
+        httpControlEnabled = true;
+        httpControl.init();
+        brewlog.log('HTTP settings initialized');
+      } else {
+        httpControlEnabled = false;
+      }
+
+      // Set Telegram settings
       if (appSettings.telegram.enabled) {
         telegramEnabled = true;
         telegram.init(appSettings.telegram.token, appSettings.telegram.chatId);
@@ -1073,6 +1083,16 @@ io.sockets.on('connection', function(socket) {
                      routeSettings.passwordDisabled = !updatedSettings.passwordActivated;
                      brewlog.log('passwordDisabled = ' + routeSettings.passwordDisabled);
 
+                     // Update HTTP settings
+                     if (updatedSettings.httpControl.enabled) {
+                       httpControlEnabled = true;
+                       httpControl.init();
+                       brewlog.log('HTTP settings updated');
+                     } else {
+                       httpControlEnabled = false;
+                     }
+
+                     // Update Telegram settings
                      if (updatedSettings.telegram.enabled) {
                        telegramEnabled = true;
                        telegram.init(updatedSettings.telegram.token, updatedSettings.telegram.chatId);

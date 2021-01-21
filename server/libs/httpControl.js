@@ -1,22 +1,25 @@
 const request = require('request');
 var appSettings = require('../app/models/appsetting');
 
-var kettleOn = 'http://sonoff-spuele/cm?user=admin&password=Leostar1&cmnd=Power%20On';
-var kettleOff = 'http://sonoff-spuele/cm?user=admin&password=Leostar1&cmnd=Power%20Off';
+var kettleOn;
+var kettleOff;
 var motorOn;
 var motorOff;
 
-appSettings.findOne(function(err, settings) {
-  if (err) {
-    brewlog.log('Couldn\'t get app settings: ' + err);
-  } else {
-    console.log(settings);
-    //kettleOn = settings.kettle.urlOn;
-    //kettleOff = settings.kettle.urlOff;
-    //motorOn = settings.motor.urlOn;
-    //motorOff = settings.motor.urlOff;
-  }
-});
+exports.init = function() {
+  appSettings.findOne(function(err, settings) {
+    if (err) {
+      brewlog.log('Couldn\'t get app settings: ' + err);
+    } else {
+      if (settings.httpControl.enabled) {
+        kettleOn = settings.httpControl.kettle.urlOn;
+        kettleOff = settings.httpControl.kettle.urlOff;
+        motorOn = settings.httpControl.motor.urlOn;
+        motorOff = settings.httpControl.motor.urlOff;
+      }
+    }
+  });
+};
 
 exports.switchKettle = function(state) {
   if (state) {
