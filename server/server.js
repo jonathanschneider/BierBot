@@ -711,7 +711,7 @@ Setting.findOne(function(err, appSettings) {
       // Set HTTP control settings
       if (appSettings.httpControl.enabled) {
         httpControlEnabled = true;
-        httpControl.init();
+        httpControl.init(appSettings.httpControl);
         brewlog.log('HTTP settings initialized');
       } else {
         httpControlEnabled = false;
@@ -1086,7 +1086,7 @@ io.sockets.on('connection', function(socket) {
                      // Update HTTP settings
                      if (updatedSettings.httpControl.enabled) {
                        httpControlEnabled = true;
-                       httpControl.init();
+                       httpControl.init(updatedSettings.httpControl);
                        brewlog.log('HTTP settings updated');
                      } else {
                        httpControlEnabled = false;
