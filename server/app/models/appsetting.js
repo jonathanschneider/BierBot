@@ -24,6 +24,17 @@ var settingSchema = mongoose.Schema({
    defaultSudSize: Number,
    motorWarningChecked: Boolean,
    addToSensorVal: Number,
+   httpControl: {
+     enabled: Boolean,
+     kettle: {
+       urlOn: String,
+       urlOff: String
+     },
+     motor: {
+       urlOn: String,
+       urlOff: String
+     }
+   },
    telegram: {
      enabled: Boolean,
      token: String,

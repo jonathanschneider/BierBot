@@ -19,6 +19,17 @@ var defaultSettings = {
    "wlanSSID": "unbekanntes WLAN",
    "motorWarningChecked": false,
    "addToSensorVal": 0,
+   "httpControl": {
+     "enabled": false,
+     "kettle": {
+       "urlOn": "",
+       "urlOff": ""
+     },
+     "motor": {
+       "urlOn": "",
+       "urlOff": ""
+     }
+   },
    "telegram": {
      "enabled": false,
      "token": "",
