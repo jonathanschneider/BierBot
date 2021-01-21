@@ -24,8 +24,6 @@ var MongoStore = require('connect-mongo')(session);
 var sessionStore = new MongoStore({
    url: configDB.url
 });
-var telegram = require('./libs/telegram');
-var telegramEnabled;
 // old BierBot stuff follows:
 var socket = require('socket.io');
 var busboy = require('connect-busboy'); //middleware for form/file upload
@@ -49,6 +47,11 @@ var plausible = require('./libs/plausible.js');
 var cors = require('cors'); // enable cross site requests
 var morgan = require('morgan');
 var exec = require('child_process').exec;
+// options
+var httpControl = require('./libs/httpControl');
+var httpControlEnabled = true;
+var telegram = require('./libs/telegram');
+var telegramEnabled;
 
 // create necessary folders
 var dir = '../logs';
@@ -282,6 +285,7 @@ Setting.findOne(function(err, appSettings) {
 
 var addToSensorValBuffer = 0;
 var motorWarningCheckedBuffer = false;
+
 Setting.findOne(function(err, appSettings) {
    brewlog.log("found settings. checking hardware revision...");
 
@@ -630,6 +634,9 @@ var heatCool = function(targetState) {
    if (heatingState != targetState) {
       brewlog.log('setting heating cooling ...' + targetState);
       pinHeatingCooling.digitalWrite(targetState);
+      if (httpControlEnabled) {
+        httpControl.switchKettle(targetState);
+      }
       heatingState = targetState;
       addLogToCurrentBrew(function(err) {}, null, null, null, null, heatingState); //  addLogToCurrentBrew = function(callback,temp, stirr, step, comment, heating) {
    }
