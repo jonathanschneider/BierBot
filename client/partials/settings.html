@@ -139,7 +139,68 @@
          <label class="col-xs-12 col-sm-5 col-md-4 col-lg-4  brew settings-description">{{'SETTINGS_WLANPWDESC' | translate}}</label>
       </div>
 
+      <!-- HTTP control -->
+      <h4>{{'SETTINGS_HTTP_CONTROL_HEADER' | translate}}</h4>
+      <div class="form-group">
+         <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_HTTP_CONTROL_ENABLE' | translate}}</label>
+         <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
+            <input type="checkbox" ng-change="pendingChanges = true;" ng-model="settings.httpControl.enabled"> {{'ACTIVATE' | translate}}
+         </div>
+         <label class="col-xs-12 col-sm-5 col-md-4 col-lg-4  brew settings-description">
+            {{'SETTINGS_HTTP_CONTROL_ENABLE_DESC' | translate}}
+         </label>
+      </div>
 
+      <!-- Kettle control -->
+      <div class="form-group" ng-show="settings.httpControl.enabled">
+         <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_HTTP_CONTROL_KETTLE_ON' | translate}}</label>
+         <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
+           <input type="text" name="httpControl.kettle.urlOn" class="form-control" ng-model="settings.httpControl.kettle.urlOn" required ng-required="true">
+           <span class="help-block" ng-show="settingsForm.httpControl.kettle.urlOn.$error.required">
+              {{'SETTINGS_HTTP_CONTROL_URL_PLEASE' | translate}}
+           </span></div>
+         <label class="col-xs-12 col-sm-5 col-md-4 col-lg-4  brew settings-description">
+           {{'SETTINGS_HTTP_CONTROL_KETTLE_ON_DESC' | translate}}</label>
+      </div>
+
+      <div class="form-group" ng-show="settings.httpControl.enabled">
+         <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_HTTP_CONTROL_KETTLE_OFF' | translate}}</label>
+         <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
+           <input type="text" name="httpControl.kettle.urlOff" class="form-control" ng-model="settings.httpControl.kettle.urlOff" required ng-required="true">
+           <span class="help-block" ng-show="settingsForm.httpControl.kettle.urlOff.$error.required">
+              {{'SETTINGS_HTTP_CONTROL_URL_PLEASE' | translate}}
+           </span>
+          </div>
+         <label class="col-xs-12 col-sm-5 col-md-4 col-lg-4  brew settings-description">
+           {{'SETTINGS_HTTP_CONTROL_KETTLE_OFF_DESC' | translate}}</label>
+      </div>
+
+      <!-- Motor control -->
+      <div class="form-group" ng-show="settings.httpControl.enabled">
+         <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_HTTP_CONTROL_MOTOR_ON' | translate}}</label>
+         <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
+           <input type="text" name="httpControl.motor.urlOn" class="form-control" ng-model="settings.httpControl.motor.urlOn" required ng-required="true">
+           <span class="help-block" ng-show="settingsForm.httpControl.motor.urlOn.$error.required">
+              {{'SETTINGS_HTTP_CONTROL_URL_PLEASE' | translate}}
+           </span></div>
+         <label class="col-xs-12 col-sm-5 col-md-4 col-lg-4  brew settings-description">
+           {{'SETTINGS_HTTP_CONTROL_MOTOR_ON_DESC' | translate}}</label>
+      </div>
+
+      <div class="form-group" ng-show="settings.httpControl.enabled">
+         <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_HTTP_CONTROL_MOTOR_OFF' | translate}}</label>
+         <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
+           <input type="text" name="httpControl.motor.urlOff" class="form-control" ng-model="settings.httpControl.motor.urlOff" required ng-required="true">
+           <span class="help-block" ng-show="settingsForm.httpControl.motor.urlOff.$error.required">
+              {{'SETTINGS_HTTP_CONTROL_URL_PLEASE' | translate}}
+           </span>
+          </div>
+         <label class="col-xs-12 col-sm-5 col-md-4 col-lg-4  brew settings-description">
+           {{'SETTINGS_HTTP_CONTROL_MOTOR_OFF_DESC' | translate}}</label>
+      </div>
+
+
+      <!-- Telegram notifications -->
       <h4>{{'SETTINGS_TELEGRAM_HEADER' | translate}}</h4>
       <div class="form-group">
          <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_TELEGRAM_ENABLE' | translate}}</label>
