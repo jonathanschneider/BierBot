@@ -291,8 +291,8 @@
                SETTINGS_TELEGRAM_TOKEN_DESC: 'To use Telegram notifications you must create Telegram bot. Message @BotFather https://telegram.me/botfather to create a Telegram bot and receive a token.',
                SETTINGS_TELEGRAM_TOKEN_PLEASE: 'Please enter your Telegram bot\'s token.',
                SETTINGS_TELEGRAM_CHATID: 'Chat ID',
-               SETTINGS_TELEGRAM_CHATID_DESC: 'The chat ID defines who notifications are sent to. Message @myidbot to request your chat ID.',
-               SETTINGS_TELEGRAM_CHATID_PLEASE: 'Please enter your chat ID.',
+               SETTINGS_TELEGRAM_CHATID_DESC: 'The chat ID defines who notifications are sent to. Message @myidbot to request your chat ID. You may provide multiple chat IDs separated by a comma.',
+               SETTINGS_TELEGRAM_CHATID_PLEASE: 'A chat ID is required to use Telegram notifications.',
                FEEDBACK: 'Feedback',
                FEEDBACK_T: 'Send feedback',
                FEEDBACK_DESC: 'You spotted an error or have a wish? We\'re glad about any suggestion. The more detaiiled, the better. If you allow us to contact you, please give your contactinformation.',
@@ -558,8 +558,8 @@
                SETTINGS_TELEGRAM_TOKEN_DESC: 'Um Telegram-Benachrichtigungen nutzen zu können, musst du einen Telegram Bot erstellen. Schreibe @BotFather, um einen Telegram Bot zu erstellen und einen Token zu erhalten.',
                SETTINGS_TELEGRAM_TOKEN_PLEASE: 'Bitte gib den Token deines Telegram-Bots ein.',
                SETTINGS_TELEGRAM_CHATID: 'Chat-ID',
-               SETTINGS_TELEGRAM_CHATID_DESC: 'Mit der Chat-ID gibst du an, an wen Benachrichtigungen geschickt werden sollen. Schreibe @myidbot, um deine Chat-ID herauszufinden.',
-               SETTINGS_TELEGRAM_CHATID_PLEASE: 'Bitte gib deine Chat-ID ein.',
+               SETTINGS_TELEGRAM_CHATID_DESC: 'Mit der Chat-ID gibst du an, an wen Benachrichtigungen geschickt werden sollen. Schreibe @myidbot, um deine Chat-ID herauszufinden. Du kannst auch mehrere Chat-IDs angeben, indem du sie mit einem Komma trennst.',
+               SETTINGS_TELEGRAM_CHATID_PLEASE: 'Eine Chat-ID ist notwendig, um Telegram-Benachrichtigungen nutzen zu können.',
                FEEDBACK: 'Feedback',
                FEEDBACK_T: 'Feedback senden',
                FEEDBACK_DESC: 'Sie haben einen Fehler entdeckt und/oder einen Wunsch? Wir freuen uns über jede Anregung. Je ausführlicher, desto besser. Wenn wir Sie kontaktieren dürfen, können Sie außerdem ihre Kontaktdetails hinterlegen',
@@ -3098,9 +3098,9 @@
             importedRecipe.steps = new Array();
 
             function addStep(step) {
-               
+
                console.log(step.NAME + ", " + step.STEP_TEMP + ", " + step.STEP_TIME);
-   
+
                tempStep = {};
                tempStep.name = step.NAME;
                tempStep.stirr = true;
@@ -3126,12 +3126,12 @@
                   var step = recipe.MASH.MASH_STEPS[key];
 
                   if (Array.isArray(step)) {
-                     // multiple steps 
+                     // multiple steps
                      step.forEach(function(step_single, idx, array) {
                         addStep(step_single);
                      });
                   } else {
-                     // single step 
+                     // single step
                      addStep(step);
                   }
               }
