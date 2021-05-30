@@ -155,7 +155,7 @@
       <div class="form-group" ng-show="settings.httpControl.enabled">
          <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_HTTP_CONTROL_KETTLE_ON' | translate}}</label>
          <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
-           <input type="text" name="httpControl.kettle.urlOn" class="form-control" ng-model="settings.httpControl.kettle.urlOn" required ng-required="true">
+           <input type="text" name="httpControl.kettle.urlOn" class="form-control" ng-model="settings.httpControl.kettle.urlOn" ng-required="settings.httpControl.enabled">
            <span class="help-block" ng-show="settingsForm.httpControl.kettle.urlOn.$error.required">
               {{'SETTINGS_HTTP_CONTROL_URL_PLEASE' | translate}}
            </span></div>
@@ -166,7 +166,7 @@
       <div class="form-group" ng-show="settings.httpControl.enabled">
          <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_HTTP_CONTROL_KETTLE_OFF' | translate}}</label>
          <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
-           <input type="text" name="httpControl.kettle.urlOff" class="form-control" ng-model="settings.httpControl.kettle.urlOff" required ng-required="true">
+           <input type="text" name="httpControl.kettle.urlOff" class="form-control" ng-model="settings.httpControl.kettle.urlOff" ng-required="settings.httpControl.enabled">
            <span class="help-block" ng-show="settingsForm.httpControl.kettle.urlOff.$error.required">
               {{'SETTINGS_HTTP_CONTROL_URL_PLEASE' | translate}}
            </span>
@@ -179,7 +179,7 @@
       <div class="form-group" ng-show="settings.httpControl.enabled">
          <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_HTTP_CONTROL_MOTOR_ON' | translate}}</label>
          <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
-           <input type="text" name="httpControl.motor.urlOn" class="form-control" ng-model="settings.httpControl.motor.urlOn" required ng-required="true">
+           <input type="text" name="httpControl.motor.urlOn" class="form-control" ng-model="settings.httpControl.motor.urlOn" ng-required="settings.httpControl.enabled">
            <span class="help-block" ng-show="settingsForm.httpControl.motor.urlOn.$error.required">
               {{'SETTINGS_HTTP_CONTROL_URL_PLEASE' | translate}}
            </span></div>
@@ -190,7 +190,7 @@
       <div class="form-group" ng-show="settings.httpControl.enabled">
          <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2  brew">{{'SETTINGS_HTTP_CONTROL_MOTOR_OFF' | translate}}</label>
          <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
-           <input type="text" name="httpControl.motor.urlOff" class="form-control" ng-model="settings.httpControl.motor.urlOff" required ng-required="true">
+           <input type="text" name="httpControl.motor.urlOff" class="form-control" ng-model="settings.httpControl.motor.urlOff" ng-required="settings.httpControl.enabled">
            <span class="help-block" ng-show="settingsForm.httpControl.motor.urlOff.$error.required">
               {{'SETTINGS_HTTP_CONTROL_URL_PLEASE' | translate}}
            </span>
